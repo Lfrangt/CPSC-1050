@@ -74,35 +74,40 @@ END
 
 ---
 
-### 流程图结构示意 / Flowchart Structure (Text Diagram)
+### 流程图（标准符号）/ Flowchart (Standard Symbols)
 
+**符号说明 / Symbol Legend:**
+- 椭圆 Oval `( )` → 起止 (Start/End)
+- 矩形 Rectangle `[ ]` → 处理 (Process: 输入/输出)
+- 菱形 Diamond `{ }` → 判断 (Decision)
+
+![温度判断流程图](Lab6_Flowchart_Temperature.png)
+
+```mermaid
+flowchart TD
+    A([START]) --> B[Read temperature]
+    B --> C{temp > 30?}
+    C -->|Yes| D[Write "Hot"]
+    C -->|No| E{20 ≤ temp ≤ 29?}
+    E -->|Yes| F[Write "Warm"]
+    E -->|No| G[Write "Cold"]
+    D --> H([END])
+    F --> H
+    G --> H
 ```
-        ┌─────────┐
-        │  START  │
-        └────┬────┘
-             │
-             ▼
-        ┌─────────────┐
-        │ Read temp   │
-        └──────┬──────┘
-               │
-               ▼
-        ┌──────────────┐
-        │ temp > 30?   │
-        └──┬───────┬───┘
-          Yes     No
-           │       │
-           ▼       ▼
-      ┌────────┐  ┌──────────────────┐
-      │ "Hot"  │  │ 20 ≤ temp ≤ 29?  │
-      └────────┘  └──┬───────────┬───┘
-                     Yes        No
-                      │          │
-                      ▼          ▼
-                 ┌────────┐  ┌────────┐
-                 │ "Warm" │  │ "Cold" │
-                 └────────┘  └────────┘
-```
+
+---
+
+### 手绘参考（按符号要求绘制）/ Hand-Drawing Reference
+
+| 步骤 | 图形 | 内容 |
+|-----|------|------|
+| 1 | 椭圆 Oval | START |
+| 2 | 矩形 Rectangle | Read temperature |
+| 3 | 菱形 Diamond | temp > 30? → Yes: "Hot" / No: 下一判断 |
+| 4 | 菱形 Diamond | 20 ≤ temp ≤ 29? → Yes: "Warm" / No: "Cold" |
+| 5 | 矩形 Rectangle | Write "Hot" / "Warm" / "Cold" |
+| 6 | 椭圆 Oval | END |
 
 ---
 
@@ -110,7 +115,7 @@ END
 
 - **边界值注意**：20 和 29 是 inclusive（包含），所以用 `>=` 和 `<=`
 - **判断顺序**：先判断 >30，再判断 20–29，最后 else 为 <20
-- **流程图符号**：椭圆=起止，矩形=处理，菱形=判断
+- **流程图符号**：椭圆=起止，矩形=处理，菱形=判断（画图时务必区分三种图形）
 
 ---
 
