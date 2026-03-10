@@ -52,8 +52,13 @@
 | 温度范围 | 输出 |
 |---------|------|
 | > 30°C | Hot |
-| 20°C ≤ temp ≤ 29°C | Warm |
+| 20°C ≤ temp ≤ 30°C | Warm |
 | < 20°C | Cold |
+
+> **📝 Note to Teacher / 给老师的说明：**  
+> 原题中 30°C 存在逻辑缺口（既不符合 "exceeds 30" 也不在 "20–29 inclusive" 内），会错误地归为 Cold。因此我将 Warm 的判断条件从「20 ≤ temp ≤ 29」改为「20 ≤ temp ≤ 30」，使 30°C 正确显示为 Warm。如有不妥请指正，谢谢！  
+>  
+> *The original problem has a gap at 30°C (it satisfies neither "exceeds 30" nor "20–29 inclusive"), which would incorrectly output Cold. I therefore modified the Warm condition from "20 ≤ temp ≤ 29" to "20 ≤ temp ≤ 30" so that 30°C displays as Warm. Please let me know if this adjustment is not appropriate. Thank you!*
 
 ---
 
@@ -64,7 +69,7 @@ START
   Read temperature
   IF temperature > 30 THEN
     Write "Hot"
-  ELSE IF temperature >= 20 AND temperature <= 29 THEN
+  ELSE IF temperature >= 20 AND temperature <= 30 THEN   // 修改：30°C 归入 Warm
     Write "Warm"
   ELSE
     Write "Cold"
@@ -88,7 +93,7 @@ flowchart TD
     A([START]) --> B[Read temperature]
     B --> C{temp > 30?}
     C -->|Yes| D[Write "Hot"]
-    C -->|No| E{20 ≤ temp ≤ 29?}
+    C -->|No| E{20 ≤ temp ≤ 30?}
     E -->|Yes| F[Write "Warm"]
     E -->|No| G[Write "Cold"]
     D --> H([END])
@@ -105,7 +110,7 @@ flowchart TD
 | 1 | 椭圆 Oval | START |
 | 2 | 矩形 Rectangle | Read temperature |
 | 3 | 菱形 Diamond | temp > 30? → Yes: "Hot" / No: 下一判断 |
-| 4 | 菱形 Diamond | 20 ≤ temp ≤ 29? → Yes: "Warm" / No: "Cold" |
+| 4 | 菱形 Diamond | 20 ≤ temp ≤ 30? → Yes: "Warm" / No: "Cold" |
 | 5 | 矩形 Rectangle | Write "Hot" / "Warm" / "Cold" |
 | 6 | 椭圆 Oval | END |
 
